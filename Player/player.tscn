@@ -1,0 +1,58 @@
+[gd_scene load_steps=8 format=3 uid="uid://rhcj1gn7uhko"]
+
+[ext_resource type="Script" path="res://Player/player.gd" id="1_vkwpj"]
+[ext_resource type="Texture2D" uid="uid://db0sp6lr7fko7" path="res://kenney_space-shooter-redux/PNG/playerShip1_blue.png" id="2_xlj3k"]
+[ext_resource type="AudioStream" uid="uid://dr7tcqs0eqoiw" path="res://Audio/Laser_Shoot6.wav" id="3_gcqm7"]
+[ext_resource type="Texture2D" uid="uid://1xm6hvcp4j0q" path="res://kenney_space-shooter-redux/PNG/Effects/fire07.png" id="3_ghmyn"]
+[ext_resource type="AudioStream" uid="uid://cqjbu4nqklpjo" path="res://Audio/rocket.wav" id="4_dlrgo"]
+
+[sub_resource type="CapsuleShape2D" id="CapsuleShape2D_pssad"]
+height = 56.0
+
+[sub_resource type="CircleShape2D" id="CircleShape2D_8spc2"]
+radius = 25.02
+
+[node name="Player" type="CharacterBody2D"]
+collision_mask = 4
+script = ExtResource("1_vkwpj")
+
+[node name="CollisionShape2D" type="CollisionShape2D" parent="."]
+position = Vector2(-5, 0)
+shape = SubResource("CapsuleShape2D_pssad")
+
+[node name="Sprites" type="Node2D" parent="."]
+
+[node name="Ship" type="Sprite2D" parent="Sprites"]
+texture_filter = 1
+rotation = 1.5708
+scale = Vector2(0.5, 0.5)
+texture = ExtResource("2_xlj3k")
+
+[node name="Thrust" type="Sprite2D" parent="Sprites"]
+visible = false
+position = Vector2(-34, 1.42109e-14)
+rotation = 1.5708
+texture = ExtResource("3_ghmyn")
+
+[node name="Audio" type="Node2D" parent="."]
+
+[node name="WeaponAudio" type="AudioStreamPlayer2D" parent="Audio"]
+stream = ExtResource("3_gcqm7")
+
+[node name="ThrustAudio" type="AudioStreamPlayer2D" parent="Audio"]
+stream = ExtResource("4_dlrgo")
+volume_db = -15.0
+
+[node name="Components" type="Node2D" parent="."]
+
+[node name="Hitbox" type="Area2D" parent="Components"]
+collision_mask = 4
+
+[node name="CollisionShape2D" type="CollisionShape2D" parent="Components/Hitbox"]
+position = Vector2(-3, 0)
+shape = SubResource("CircleShape2D_8spc2")
+
+[node name="Bullet Spawn" type="Marker2D" parent="."]
+position = Vector2(50, 0)
+
+[connection signal="area_entered" from="Components/Hitbox" to="." method="_on_hitbox_area_entered"]

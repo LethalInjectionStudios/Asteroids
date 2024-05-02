@@ -1,0 +1,6 @@
+res://Asteroids/asteroid.tscn::d9d55cbe72c6acade4ab401a753b633b::1714515084::res://.godot/exported/133200997/export-c9c34c45f8e1ee97003e0abf4e6d2fb3-asteroid.scn
+res://Components/HitBoxComponent/hit_box_component.tscn::ccfb3b6d79cac7be3b07d84a9e471046::1714515780::res://.godot/exported/133200997/export-ee5e0486db4cee746554db403db39c92-hit_box_component.scn
+res://Laser/laser.tscn::7f16e652df98e4849ce99b8078adfe4f::1714515780::res://.godot/exported/133200997/export-c152ef4d5686276066111f15635066e7-laser.scn
+res://Level/level.tscn::29c5b5fc699c9bd848dd9faf603cc0cc::1714515780::res://.godot/exported/133200997/export-c4be25a6cd29300dd9cba31c4cc13b7a-level.scn
+res://Particles/burst.tscn::a238450381bb0de5f607fdc4cdc1040f::1714510542::res://.godot/exported/133200997/export-6ce3497712b69201fa17c8fbc015450c-burst.scn
+res://Player/player.tscn::a09328b7efd04b0bf30f04a37b75e349::1714515780::res://.godot/exported/133200997/export-d267b47f7e81a3258979164d56d0d9c2-player.scn

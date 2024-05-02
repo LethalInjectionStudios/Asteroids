@@ -1,0 +1,15 @@
+[gd_scene load_steps=4 format=3 uid="uid://6gei665vvldf"]
+
+[ext_resource type="Script" path="res://Level/level.gd" id="1_hlgqv"]
+[ext_resource type="PackedScene" uid="uid://rhcj1gn7uhko" path="res://Player/player.tscn" id="1_ma4ff"]
+[ext_resource type="PackedScene" uid="uid://bvswucgdtojlb" path="res://Laser/laser.tscn" id="2_ghnjp"]
+
+[node name="Level" type="Node2D"]
+script = ExtResource("1_hlgqv")
+laser = ExtResource("2_ghnjp")
+
+[node name="Player" parent="." instance=ExtResource("1_ma4ff")]
+position = Vector2(604, 273)
+rotation = 1.63175
+
+[node name="Projectiles" type="Node2D" parent="."]

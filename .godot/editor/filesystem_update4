@@ -1,0 +1,4 @@
+res://Level/level.tscn
+res://Laser/laser.tscn
+res://Components/HitBoxComponent/hit_box_component.tscn
+res://Player/player.tscn

@@ -1,0 +1,109 @@
+[gd_scene load_steps=8 format=3 uid="uid://6gei665vvldf"]
+
+[ext_resource type="Script" path="res://Level/level.gd" id="1_hlgqv"]
+[ext_resource type="PackedScene" uid="uid://rhcj1gn7uhko" path="res://Player/player.tscn" id="1_ma4ff"]
+[ext_resource type="PackedScene" uid="uid://bvswucgdtojlb" path="res://Laser/laser.tscn" id="2_ghnjp"]
+[ext_resource type="PackedScene" uid="uid://d2br6mjre4wcp" path="res://Asteroids/asteroid.tscn" id="3_hsljo"]
+[ext_resource type="AudioStream" uid="uid://c8b6t7345pdcb" path="res://Audio/Explosion4.wav" id="5_qvw50"]
+[ext_resource type="PackedScene" uid="uid://bb4gvpoxcmpkm" path="res://Particles/burst.tscn" id="6_5tkio"]
+[ext_resource type="Texture2D" uid="uid://f13sghleaqa5" path="res://Large 1024x1024/Blue Nebula/Blue_Nebula_08-1024x1024.png" id="7_21qr4"]
+
+[node name="Level" type="Node2D"]
+script = ExtResource("1_hlgqv")
+laser = ExtResource("2_ghnjp")
+asteroid = ExtResource("3_hsljo")
+particles_effect = ExtResource("6_5tkio")
+
+[node name="BlueNebula08-1024x1024" type="Sprite2D" parent="."]
+position = Vector2(405, 375)
+texture = ExtResource("7_21qr4")
+
+[node name="Player" parent="." instance=ExtResource("1_ma4ff")]
+position = Vector2(604, 273)
+rotation = 1.63175
+
+[node name="Projectiles" type="Node2D" parent="."]
+
+[node name="SpawnPoints" type="Node2D" parent="."]
+
+[node name="Marker2D" type="Marker2D" parent="SpawnPoints"]
+position = Vector2(376, -202)
+
+[node name="Marker2D2" type="Marker2D" parent="SpawnPoints"]
+visible = false
+position = Vector2(840, -195)
+
+[node name="Marker2D3" type="Marker2D" parent="SpawnPoints"]
+visible = false
+position = Vector2(1003, 139)
+
+[node name="Marker2D4" type="Marker2D" parent="SpawnPoints"]
+visible = false
+position = Vector2(997, 518)
+
+[node name="Marker2D5" type="Marker2D" parent="SpawnPoints"]
+visible = false
+position = Vector2(898, 908)
+
+[node name="Marker2D6" type="Marker2D" parent="SpawnPoints"]
+visible = false
+position = Vector2(389, 939)
+
+[node name="Marker2D7" type="Marker2D" parent="SpawnPoints"]
+visible = false
+position = Vector2(-222, 830)
+rotation = 0.48813
+
+[node name="Marker2D8" type="Marker2D" parent="SpawnPoints"]
+visible = false
+position = Vector2(-206, 529)
+rotation = 0.48813
+
+[node name="Marker2D9" type="Marker2D" parent="SpawnPoints"]
+visible = false
+position = Vector2(-205, 184)
+rotation = 0.48813
+
+[node name="Marker2D10" type="Marker2D" parent="SpawnPoints"]
+visible = false
+position = Vector2(-106, -141)
+rotation = 0.48813
+
+[node name="Timers" type="Node2D" parent="."]
+
+[node name="SpawnTimer" type="Timer" parent="Timers"]
+
+[node name="Asteroids" type="Node2D" parent="."]
+
+[node name="Audio" type="Node2D" parent="."]
+
+[node name="PlayerDestroyedAudio" type="AudioStreamPlayer2D" parent="Audio"]
+stream = ExtResource("5_qvw50")
+
+[node name="AudioListener2D" type="AudioListener2D" parent="Audio"]
+current = true
+
+[node name="Particles" type="Node2D" parent="."]
+
+[node name="Burst" parent="Particles" instance=ExtResource("6_5tkio")]
+
+[node name="UI" type="Node2D" parent="."]
+
+[node name="Label" type="Label" parent="UI"]
+offset_left = 11.0
+offset_top = 11.0
+offset_right = 51.0
+offset_bottom = 34.0
+theme_override_font_sizes/font_size = 32
+text = "<score>"
+
+[node name="Button" type="Button" parent="UI"]
+visible = false
+offset_left = 373.0
+offset_top = 374.0
+offset_right = 461.0
+offset_bottom = 405.0
+text = "Play Again"
+
+[connection signal="timeout" from="Timers/SpawnTimer" to="." method="_on_spawn_timer_timeout"]
+[connection signal="pressed" from="UI/Button" to="." method="_on_button_pressed"]
